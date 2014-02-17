@@ -27,3 +27,6 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 *.vssscc
 $tf*/
+UnitTestProject1/UnitTest1.cs
+UnitTestProject1/Properties/AssemblyInfo.cs
+UnitTestProject1/UnitTestProject1.csproj
