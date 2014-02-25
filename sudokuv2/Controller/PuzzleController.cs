@@ -129,7 +129,7 @@ namespace sudokuv2.Controller
             }
             else
             {
-                MessageBox.Show("Nothing ti clear!");
+                MessageBox.Show("Nothing to clear!");
             }
         }
     }
