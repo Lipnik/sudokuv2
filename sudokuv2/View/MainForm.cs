@@ -15,6 +15,7 @@ namespace sudokuv2.View
     public partial class MainForm : Form,IView
     {
         PuzzleController controller;
+        HintController hController;
         int input;
 
         public MainForm()
@@ -29,6 +30,11 @@ namespace sudokuv2.View
             button1.BackColor = Color.CornflowerBlue;
         }
 
+        public void HintUpdate()
+        {
+            hController.HintUsed();
+        }
+
         public object GetPresentation()
         {
             List<Control> puzzleView = new List<Control>();
@@ -41,7 +47,10 @@ namespace sudokuv2.View
 
         private void NewGame_Click(object sender, EventArgs e)
         {
-            controller.NewGame();          
+            if (controller.NewGame())
+            {
+                hController = new HintController(button10);    
+            }      
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -58,7 +67,14 @@ namespace sudokuv2.View
                 }
                 catch (Exception)
                 {
-                    input = 0;
+                    if (selected.Text=="Delete")
+                    {
+                        input = 0;
+                    }
+                    else
+                    {
+                        input = 10;
+                    }
                 }
             }
         }
@@ -68,6 +84,10 @@ namespace sudokuv2.View
             var clicked = sender as Label;
             int index = int.Parse(clicked.Name.Split('l')[2]);
             controller.InsertValue(input, index);
+            if (input==10)
+            {
+                button1.PerformClick(); 
+            }
         }
 
         public void EnableInput()

@@ -21,6 +21,12 @@ namespace sudokuv2.Model
             this.fixated = false;
         }
 
+        public Cell(int id, int value)
+        {
+            this.id = id;
+            this.value = value;
+        }
+
         public bool Validate(int value)
         {
             return row.Validate(value,this.id) && column.Validate(value,this.id) && group.Validate(value,this.id);

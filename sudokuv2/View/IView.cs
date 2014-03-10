@@ -13,6 +13,8 @@ namespace sudokuv2.View
 
         DialogResult ShowDialog();
 
+        void HintUpdate();
+
         void DisableInput();
 
         void EnableInput();

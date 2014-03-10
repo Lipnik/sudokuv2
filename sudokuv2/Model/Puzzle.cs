@@ -123,6 +123,16 @@ namespace sudokuv2.Model
 
         private List<Cell> puzzle;
 
+        public List<Cell> Copy()
+        {
+            List<Cell> copy = new List<Cell>();
+            foreach (var cell in puzzle)
+            {
+                copy.Add(new Cell(cell.id, cell.value));
+            }
+            return copy;
+        }
+
         public void ClearInputs()
         {
             foreach (var cell in FreeCells)

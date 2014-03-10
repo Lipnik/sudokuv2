@@ -40,6 +40,11 @@ namespace sudokuv2.View
             throw new NotImplementedException();
         }
 
+        public void HintUpdate()
+        {
+            throw new NotImplementedException();
+        }
+
         private void button_Click(object sender, EventArgs e)
         {
             var button = sender as Button;

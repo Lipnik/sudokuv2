@@ -54,8 +54,9 @@ namespace sudokuv2.Controller
             }
         }
 
-        public void NewGame()
+        public bool NewGame()
         {
+
             var diffForm = ViewFactory.GetView("diff");
             var ok=diffForm.ShowDialog();
             int difficulty;
@@ -72,8 +73,10 @@ namespace sudokuv2.Controller
             {
                 puzzle = PuzzleFactory.Create(difficulty);
                 LoadPuzzle();
-                form.EnableInput();  
-            }               
+                form.EnableInput();
+                return true;
+            }
+            return false;  
         }
 
         public void InsertValue(int value, int index)
@@ -85,7 +88,12 @@ namespace sudokuv2.Controller
 
             if (!puzzle.CellFixated(index))
             {
-                if (value > 0)
+                if (value==10)//Hint
+                {
+                    value = SolvedPuzzle.GetValue(index);
+                    form.HintUpdate();
+                }
+                if (value > 0)//Number
                 {
                     if (!puzzle.SetValue(value, index))
                     {
@@ -97,7 +105,7 @@ namespace sudokuv2.Controller
                         solved = puzzle.IsSolved();
                     }
                 }
-                else
+                else//Delete
                 {
                     puzzle.RemoveValue(index);
                 }
