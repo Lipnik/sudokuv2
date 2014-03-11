@@ -14,13 +14,14 @@ namespace sudokuv2.View
 {
     public partial class MainForm : Form,IView
     {
-        PuzzleController controller;
+        PuzzleController pController;
         HintController hController;
+        TimeController tControler;
         int input;
 
         public MainForm()
         {
-            controller = new PuzzleController(this);
+            pController = new PuzzleController(this);
             InitializeComponent();
         }
 
@@ -30,8 +31,10 @@ namespace sudokuv2.View
             button1.BackColor = Color.CornflowerBlue;
         }
 
-        public void HintUpdate()
+        public void HintUpdate(int value)
         {
+            Button hValueButton = this.Controls.Find("button" + value.ToString(), false)[0] as Button;
+            hValueButton.PerformClick();
             hController.HintUsed();
         }
 
@@ -47,10 +50,7 @@ namespace sudokuv2.View
 
         private void NewGame_Click(object sender, EventArgs e)
         {
-            if (controller.NewGame())
-            {
-                hController = new HintController(button10);    
-            }      
+            Show_Stopper(New_Game);
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -61,20 +61,17 @@ namespace sudokuv2.View
             {
                 prevSelected.BackColor = Control.DefaultBackColor;
                 selected.BackColor = Color.CornflowerBlue;
-                try
+                if (selected.Text == "Delete")
+                {
+                    input = 0;
+                }
+                else if (selected.Text.Contains("Hint"))
+                {
+                    input = 10;
+                }
+                else
                 {
                     input = int.Parse(selected.Text);
-                }
-                catch (Exception)
-                {
-                    if (selected.Text=="Delete")
-                    {
-                        input = 0;
-                    }
-                    else
-                    {
-                        input = 10;
-                    }
                 }
             }
         }
@@ -83,11 +80,7 @@ namespace sudokuv2.View
         {
             var clicked = sender as Label;
             int index = int.Parse(clicked.Name.Split('l')[2]);
-            controller.InsertValue(input, index);
-            if (input==10)
-            {
-                button1.PerformClick(); 
-            }
+            pController.InsertValue(input, index);
         }
 
         public void EnableInput()
@@ -99,6 +92,7 @@ namespace sudokuv2.View
             }
 
             Clear.Enabled = true;
+            PauseB.Enabled = true;
         }
 
         public void DisableInput()
@@ -109,11 +103,47 @@ namespace sudokuv2.View
             }
 
             Clear.Enabled = false;
+            PauseB.Enabled = false;
+            Game_Timer.Enabled = false;
         }
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            controller.ClearPuzzle();
+            pController.ClearPuzzle();
+        }
+
+        private void Game_Timer_Tick(object sender, EventArgs e)
+        {
+            tControler.Tick();
+        }
+
+        private void Show_Stopper(Func<int> func)
+        {
+            Game_Timer.Stop();
+            func();
+            Game_Timer.Start();
+        }
+
+        private int New_Game()
+        {
+            if (pController.NewGame())
+            {
+                hController = new HintController(button10);
+                tControler = new TimeController(Game_Time);
+                Game_Timer.Enabled = true;
+            }
+            return 1;
+        }
+
+        private int Pause()
+        {
+            MessageBox.Show("Press OK to continue!");
+            return 1;
+        }
+
+        private void PauseB_Click(object sender, EventArgs e)
+        {
+            Show_Stopper(Pause);
         }
     }
 }

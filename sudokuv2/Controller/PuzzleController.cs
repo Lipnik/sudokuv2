@@ -90,8 +90,8 @@ namespace sudokuv2.Controller
             {
                 if (value==10)//Hint
                 {
-                    value = SolvedPuzzle.GetValue(index);
-                    form.HintUpdate();
+                    value = puzzle.GetHint(index);
+                    form.HintUpdate(value);
                 }
                 if (value > 0)//Number
                 {

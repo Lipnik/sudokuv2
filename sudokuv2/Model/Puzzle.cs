@@ -123,14 +123,21 @@ namespace sudokuv2.Model
 
         private List<Cell> puzzle;
 
-        public List<Cell> Copy()
+        private List<Cell> solvedPuzzle;
+
+        public int GetHint(int index)
+        {
+            return solvedPuzzle.Single(c => c.id == index).value;
+        }
+
+        public void SetSolved()
         {
             List<Cell> copy = new List<Cell>();
             foreach (var cell in puzzle)
             {
                 copy.Add(new Cell(cell.id, cell.value));
             }
-            return copy;
+            solvedPuzzle = copy;
         }
 
         public void ClearInputs()

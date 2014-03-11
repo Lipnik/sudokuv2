@@ -40,7 +40,7 @@ namespace sudokuv2.View
             throw new NotImplementedException();
         }
 
-        public void HintUpdate()
+        public void HintUpdate(int value)
         {
             throw new NotImplementedException();
         }

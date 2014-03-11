@@ -14,7 +14,7 @@ namespace sudokuv2.Model
         {
             complete = false;
             generate(puzzle);
-            SolvedPuzzle.SetPuzzle(puzzle.Copy());
+            puzzle.SetSolved();
         }
 
         private static void generate(Puzzle puzzle, int index = 1)

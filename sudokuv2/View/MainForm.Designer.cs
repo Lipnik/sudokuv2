@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -109,7 +110,7 @@
             this.label79 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
-            this.NewGame = new System.Windows.Forms.Button();
+            this.NewGameB = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -122,6 +123,9 @@
             this.button0 = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.Game_Timer = new System.Windows.Forms.Timer(this.components);
+            this.Game_Time = new System.Windows.Forms.Label();
+            this.PauseB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -934,15 +938,15 @@
             this.label81.TabIndex = 55;
             this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // NewGame
+            // NewGameB
             // 
-            this.NewGame.Location = new System.Drawing.Point(30, 264);
-            this.NewGame.Name = "NewGame";
-            this.NewGame.Size = new System.Drawing.Size(85, 23);
-            this.NewGame.TabIndex = 82;
-            this.NewGame.Text = "New Game";
-            this.NewGame.UseVisualStyleBackColor = true;
-            this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
+            this.NewGameB.Location = new System.Drawing.Point(30, 264);
+            this.NewGameB.Name = "NewGameB";
+            this.NewGameB.Size = new System.Drawing.Size(85, 23);
+            this.NewGameB.TabIndex = 82;
+            this.NewGameB.Text = "New Game";
+            this.NewGameB.UseVisualStyleBackColor = true;
+            this.NewGameB.Click += new System.EventHandler(this.NewGame_Click);
             // 
             // button1
             // 
@@ -1061,7 +1065,7 @@
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(85, 23);
             this.Clear.TabIndex = 93;
-            this.Clear.Text = "Clear";
+            this.Clear.Text = "Clear All";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
@@ -1076,11 +1080,38 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button_Click);
             // 
+            // Game_Timer
+            // 
+            this.Game_Timer.Interval = 1000;
+            this.Game_Timer.Tick += new System.EventHandler(this.Game_Timer_Tick);
+            // 
+            // Game_Time
+            // 
+            this.Game_Time.AutoSize = true;
+            this.Game_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Game_Time.Location = new System.Drawing.Point(318, 296);
+            this.Game_Time.Name = "Game_Time";
+            this.Game_Time.Size = new System.Drawing.Size(0, 25);
+            this.Game_Time.TabIndex = 95;
+            // 
+            // PauseB
+            // 
+            this.PauseB.Enabled = false;
+            this.PauseB.Location = new System.Drawing.Point(94, 300);
+            this.PauseB.Name = "PauseB";
+            this.PauseB.Size = new System.Drawing.Size(75, 23);
+            this.PauseB.TabIndex = 96;
+            this.PauseB.Text = "Pause";
+            this.PauseB.UseVisualStyleBackColor = true;
+            this.PauseB.Click += new System.EventHandler(this.PauseB_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 365);
+            this.Controls.Add(this.PauseB);
+            this.Controls.Add(this.Game_Time);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.button0);
@@ -1093,7 +1124,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.NewGame);
+            this.Controls.Add(this.NewGameB);
             this.Controls.Add(this.label55);
             this.Controls.Add(this.label56);
             this.Controls.Add(this.label57);
@@ -1179,6 +1210,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1265,7 +1297,7 @@
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Button NewGame;
+        private System.Windows.Forms.Button NewGameB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -1278,6 +1310,9 @@
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Timer Game_Timer;
+        private System.Windows.Forms.Label Game_Time;
+        private System.Windows.Forms.Button PauseB;
     }
 }
 

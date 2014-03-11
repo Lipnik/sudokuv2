@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Controller\HintController.cs" />
     <Compile Include="Controller\PuzzleController.cs" />
-    <Compile Include="Model\SolvedPuzzle.cs" />
+    <Compile Include="Controller\TimeController.cs" />
     <Compile Include="View\ViewFactory.cs" />
     <Compile Include="Model\PuzzleGenerator.cs" />
     <Compile Include="View\DiffForm.cs">
