@@ -13,16 +13,16 @@ namespace sudokuv2.Controller
         public HintController(Button hintB)
         {
             this.hintB = hintB;
-            hCount = 3;
-            this.hintB.Text = "Hint(" + hCount.ToString() + ")";
+            hintCount = 3;
+            this.hintB.Text = "Hint(" + hintCount.ToString() + ")";
             this.hintB.Enabled = true;
         }
 
         public void HintUsed()
         {
-            hCount--;
-            this.hintB.Text = "Hint(" + hCount.ToString() + ")";
-            if (hCount==0)
+            hintCount--;
+            this.hintB.Text = "Hint(" + hintCount.ToString() + ")";
+            if (hintCount==0)
             {
                 this.hintB.Enabled = false;
             }
@@ -30,15 +30,15 @@ namespace sudokuv2.Controller
 
         public void LoadHints(int hintCount)
         {
-            hCount = hintCount;
-            this.hintB.Text = "Hint(" + hCount.ToString() + ")";
-            if (hCount == 0)
+            hintCount = hintCount;
+            this.hintB.Text = "Hint(" + hintCount.ToString() + ")";
+            if (hintCount == 0)
             {
                 this.hintB.Enabled = false;
             }
         }
 
         private Button hintB;
-        public int hCount { get; private set; }
+        public int hintCount { get; private set; }
     }
 }

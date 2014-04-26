@@ -54,7 +54,7 @@ namespace sudokuv2.Controller
                 using (Stream stream= new FileStream(saveDialog.FileName,FileMode.Create,FileAccess.Write))
                 {
                     IFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(stream, new SaveGame(pController.puzzle,tController.time,hController.hCount));
+                    formatter.Serialize(stream, new SaveGame(pController.puzzle,tController.time,hController.hintCount));
                 }
                 return false;
             }
