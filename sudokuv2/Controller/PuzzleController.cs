@@ -13,14 +13,14 @@ namespace sudokuv2.Controller
     public class PuzzleController
     {
         IView form;
-        Puzzle puzzle;
+        public Puzzle puzzle{get;set;}
 
         public PuzzleController(IView form)
         {
             this.form = form;
         }
 
-        private void LoadPuzzle()
+        private void DrawPuzzle()
         {            
             var puzzleView = form.GetPresentation() as List<Control>;       
             foreach (var cell in puzzle)
@@ -72,13 +72,19 @@ namespace sudokuv2.Controller
             if (difficulty>0)
             {
                 puzzle = PuzzleFactory.Create(difficulty);
-                LoadPuzzle();
+                DrawPuzzle();
                 form.EnableInput();
                 return true;
             }
             return false;  
         }
 
+        public void LoadPuzzle(Puzzle puzzle)
+        {
+            this.puzzle = puzzle;
+            DrawPuzzle();
+            form.EnableInput();
+        }
         public void InsertValue(int value, int index)
         {
             puzzle.ClearErrors();
@@ -110,7 +116,7 @@ namespace sudokuv2.Controller
                     puzzle.RemoveValue(index);
                 }
 
-                LoadPuzzle();
+                DrawPuzzle();
 
                 if (errorMessage)
                 {
@@ -132,7 +138,7 @@ namespace sudokuv2.Controller
                 {
                     puzzle.ClearErrors();
                     puzzle.ClearInputs();
-                    LoadPuzzle();
+                    DrawPuzzle();
                 }      
             }
             else

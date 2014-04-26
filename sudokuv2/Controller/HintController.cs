@@ -28,7 +28,17 @@ namespace sudokuv2.Controller
             }
         }
 
+        public void LoadHints(int hintCount)
+        {
+            hCount = hintCount;
+            this.hintB.Text = "Hint(" + hCount.ToString() + ")";
+            if (hCount == 0)
+            {
+                this.hintB.Enabled = false;
+            }
+        }
+
         private Button hintB;
-        private int hCount;
+        public int hCount { get; private set; }
     }
 }

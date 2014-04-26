@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace sudokuv2.Model
 {
+    [Serializable]
     public class Cell
     {
         public Cell(int id,FillGroup row,FillGroup column,FillGroup group)

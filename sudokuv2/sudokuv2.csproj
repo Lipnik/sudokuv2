@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Controller\HintController.cs" />
     <Compile Include="Controller\PuzzleController.cs" />
+    <Compile Include="Controller\SaveLoadController.cs" />
     <Compile Include="Controller\TimeController.cs" />
+    <Compile Include="Model\SaveGame.cs" />
     <Compile Include="View\ViewFactory.cs" />
     <Compile Include="Model\PuzzleGenerator.cs" />
     <Compile Include="View\DiffForm.cs">

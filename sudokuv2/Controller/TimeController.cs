@@ -46,7 +46,13 @@ namespace sudokuv2.Controller
             }
         }
 
+        public void LoadTime(int time)
+        {
+            this.time = time;
+            this.gameTime.Text = this.ToString();
+        }
+
         private Label gameTime;
-        int time;//seconds
+        public int time { get; private set; }//seconds
     }
 }

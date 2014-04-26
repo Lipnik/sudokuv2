@@ -11,6 +11,10 @@ namespace sudokuv2.View
     {
         object GetPresentation();
 
+        object[] GiveControl();
+
+        void TakeControl(object[] controllers);
+
         DialogResult ShowDialog();
 
         void HintUpdate(int value);

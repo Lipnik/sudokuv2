@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace sudokuv2.Model
 {
+    [Serializable]
     public class FillGroup
     {
         public FillGroup(int id)

@@ -45,6 +45,16 @@ namespace sudokuv2.View
             throw new NotImplementedException();
         }
 
+        public object[] GiveControl()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeControl(object[] controllers)
+        {
+            throw new NotImplementedException();
+        }
+
         private void button_Click(object sender, EventArgs e)
         {
             var button = sender as Button;
